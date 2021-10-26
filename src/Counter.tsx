@@ -40,7 +40,15 @@ export const Counter = ({}: CounterProps) => {
 
   const [isCounting, setIsCounting] = React.useState(false);
 
-  const maxDigits = 24;
+  const digitsRef = React.useRef<HTMLDivElement>();
+  React.useEffect(() => {
+    const elt = digitsRef.current;
+    if (elt) {
+      elt.scrollLeft = elt.scrollWidth;
+    }
+  }, [numDigits]);
+
+  const maxDigits = 16;
   const minDigits = 1;
 
   const base = symbols.length;
@@ -95,8 +103,11 @@ export const Counter = ({}: CounterProps) => {
   const onNumDigitsChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const txtVal = evt.currentTarget.value.trim();
     const numVal = Number.parseInt(evt.currentTarget.value, 10);
+
+    if (numVal >= 1) {
+      setNumDigits(Math.max(minDigits, Math.min(maxDigits, numVal)));
+    }
     setNumDigitsText(txtVal);
-    setNumDigits(Math.max(minDigits, Math.min(maxDigits, numVal)));
   };
 
   const onToggleAuto = () => {
@@ -123,7 +134,7 @@ export const Counter = ({}: CounterProps) => {
         <a href="#" onClick={onPresetClick("01")}>
           Binary
         </a>
-        <a href="#" onClick={onPresetClick("012356789ABCDEF")}>
+        <a href="#" onClick={onPresetClick("0123456789ABCDEF")}>
           Hexadecimal
         </a>
       </div>
@@ -154,7 +165,7 @@ export const Counter = ({}: CounterProps) => {
       </div>
       <div className="counterDevice">
         <button type="button" className="button goButton" onClick={onToggleAuto}>{isCounting ? "Stop" : "Start"}</button>
-        <div className="counterDigits">
+        <div className="counterDigits" ref={digitsRef}>
           {digits.map((digit, i) => (
             <div key={i} className="counterDigit">
               <div className="digitWindow">
