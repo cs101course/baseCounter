@@ -1,0 +1,127 @@
+.counter {
+  font-size: 1em;
+  text-rendering: optimizeLegibility;
+  font-family: "Open Sans", Helvetica, sans-serif;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: min-content min-content min-content;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". ."
+    ". ."
+    ". .";
+  justify-content: center;
+}
+
+.inputs label {
+  padding: 6px;
+  text-align: right;
+}
+
+.counterDigits {
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 0px 5px #000 inset;
+  background-color: #eee;
+}
+
+.counterDigit {
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: bold;
+  width: 32px;
+  height: 40px;
+  text-align: center;
+}
+
+.counterDigit:not(:first-child) {
+  border-left: 1px solid #444;
+}
+
+.counterDigit.first {
+}
+
+.counterDigit.last {
+  font-style: italic;
+}
+
+.counterDevice {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #444; ;
+}
+
+.button {
+  padding: 0.35em 1.2em;
+  border: 0.1em solid rgb(92, 98, 130);
+  margin: 0;
+  margin-left: 6px;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: #444;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  background-color: rgb(220, 220, 238);
+}
+
+.button:hover {
+  color: #fff;
+  background-color: rgb(114, 123, 163);
+}
+
+.presets {
+  display: flex;
+  justify-content: center;
+}
+
+.presets a {
+  margin: 10px;
+  color:rgb(54, 57, 75);
+}
+
+
+.presets a:hover {
+  color:rgb(114, 123, 163);
+}
+
+.digitWindow {
+  width: 32px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.digitWheel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  transition: transform 0.5s;
+}
+
+.digitCell {
+  display: block;
+}
+
+.goButton {
+  width: 80px;
+  margin-right: 6px;
+}
+
+.incdecbutton {
+  font-size: 22px;
+  text-align: center;
+  line-height: 18px;
+  padding: 10px;
+  width: 36px;
+  font-weight: bold;
+}
