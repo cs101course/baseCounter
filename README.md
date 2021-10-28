@@ -1,5 +1,5 @@
-# IEEE754
+# Base Counter
 
-Demonstrates how IEEE754 stores floating points as binary
+Demonstrates how to count in any base
 
-[Demo](https://d3lo92uftxhq1a.cloudfront.net/ieee754/)
+[Demo](https://d3lo92uftxhq1a.cloudfront.net/counter)

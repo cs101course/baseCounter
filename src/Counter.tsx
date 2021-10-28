@@ -80,8 +80,8 @@ export const Counter = ({}: CounterProps) => {
     if (newVal.toString().length > maxDigits) {
       newVal = 0;
     }
-    setDecimalVal(newVal);
     setPrevVal(decimalVal);
+    setDecimalVal(newVal);
     setDecimalValText(newVal.toString());
   };
 
@@ -113,6 +113,13 @@ export const Counter = ({}: CounterProps) => {
   const onToggleAuto = () => {
     setIsCounting(!isCounting);
   };
+
+  const onReset = () => {
+    const newVal = 0;
+    setPrevVal(decimalVal);
+    setDecimalVal(newVal);
+    setDecimalValText(newVal.toString());
+  }
 
   let progressiveVal = decimalVal;
   const digits = Array(numDigits)
@@ -162,6 +169,8 @@ export const Counter = ({}: CounterProps) => {
           value={decimalValText}
           onChange={onDecimalValChange}
         />
+        <div></div>
+        <button className="button resetButton" onClick={onReset}>Reset to 0</button>
       </div>
       <div className="counterDevice">
         <button type="button" className="button goButton" onClick={onToggleAuto}>{isCounting ? "Stop" : "Start"}</button>
